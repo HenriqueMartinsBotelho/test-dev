@@ -1,12 +1,12 @@
 # Como Instalar e Executar
 
-1. **.env**: Crie um `.env` com a variável: `PORT=8080`.
+1. **.env**: Crie um arquivo `.env` contendo a variável: `PORT=8080`.
 2. **Instalação**: Execute `npm install` para instalar todas as dependências necessárias.
-3. **Execução**: Utilize `npm run dev` para iniciar o servidor em modo de desenvolvimento na porta 8080.
+3. **Execução**: Use `npm run dev` para iniciar o servidor em modo de desenvolvimento na porta 8080.
 
-## Como Usar
+# Como Usar
 
-Após iniciar o servidor, faça requisições POST para `/search` com o seguinte payload JSON para receber uma lista de quartos e preços disponíveis:
+Após iniciar o servidor, faça requisições POST para `/search` com o payload JSON a seguir para receber uma lista de quartos e preços disponíveis:
 
 ```json
 {
@@ -25,13 +25,11 @@ curl -X POST http://localhost:8080/search -H "Content-Type: application/json" -d
 
 Execute `npm test` para rodar os testes automatizados.
 
-## Documentação
+## Pensamentos
 
-Acesse `/docs` no servidor local para ver a documentação completa da API.
+Aqui estão algumas ideias que tive durante o desenvolvimento do projeto:
 
-## Detalhes de Implementação
-
-Para facilitar a expansão futura da API, os parâmetros da URL de requisição são montados dinamicamente usando `URLSearchParams`, permitindo fácil inclusão de novos parâmetros sem alterar a base do código:
+1. Para facilitar a expansão futura da API, os parâmetros da URL de requisição são montados dinamicamente usando `URLSearchParams`, o que permite a fácil inclusão de novos parâmetros sem alterar a base do código:
 
 ```js
 const queryParams = new URLSearchParams({
@@ -48,4 +46,6 @@ const queryParams = new URLSearchParams({
 });
 ```
 
-Utilizei o `encodeURIComponent` para garantir que dados enviados em URLs sejam transmitidos de forma correta e segura previnindo os ataques de Cross-Site Scripting.
+2. Utilizei o `encodeURIComponent` para garantir que os dados enviados em URLs sejam transmitidos de forma correta e segura, prevenindo ataques de Cross-Site Scripting (XSS).
+
+3. Para os testes, utilizei `Jest` em conjunto com `Supertest`. Jest gerencia a execução dos testes e as asserções, enquanto Supertest lida com as requisições HTTP.

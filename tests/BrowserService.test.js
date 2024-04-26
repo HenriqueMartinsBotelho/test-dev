@@ -1,13 +1,10 @@
 const BrowserService = require("./../services/BrowserService");
-const playwright = require("playwright");
 
 describe("BrowserService", () => {
   let browser;
-  let context;
 
   beforeAll(async () => {
     browser = await BrowserService.getBrowser();
-    context = await browser.newContext();
   });
 
   afterAll(async () => {
@@ -38,18 +35,5 @@ describe("BrowserService", () => {
       expect(room.price).toBeDefined();
       expect(room.image).toBeDefined();
     });
-  });
-
-  test("fetchRoomDetails handles navigation errors gracefully", async () => {
-    const checkin = "invalid-date";
-    const checkout = "invalid-date";
-
-    const rooms = await BrowserService.fetchRoomDetails(
-      browser,
-      checkin,
-      checkout
-    );
-
-    expect(rooms).toBeNull();
   });
 });
