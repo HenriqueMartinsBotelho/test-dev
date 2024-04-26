@@ -65,7 +65,7 @@ class BrowserService {
         return {
           name: roomElem.querySelector(".room-option-title--title span")?.innerText || "No name",
           description: roomElem.querySelector(".room-option-title--amenities")?.innerText || "No description",
-          price: roomElem.querySelector(".daily-price--total strong")?.innerText.replace(/R\$|,/g, "").trim() || "No price",
+          price: roomElem.querySelector(".daily-price--total strong")?.innerText || "No price",
           image: (() => {
             const carouselContainer = roomElem.closest(".room-option-wrapper").querySelector(".q-carousel__slide");
             const backgroundImage = carouselContainer ? carouselContainer.style.backgroundImage : "";

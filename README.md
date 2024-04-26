@@ -21,6 +21,10 @@ Exemplo de requisição usando cURL:
 curl -X POST http://localhost:8080/search -H "Content-Type: application/json" -d '{"checkin": "2024-06-21", "checkout": "2024-06-25"}'
 ```
 
+## Resultado do Postman
+
+![postman](./postman.png)
+
 ## Testes
 
 Execute `npm test` para rodar os testes automatizados.
